@@ -1,6 +1,7 @@
 const express = require('express');
 const bookRouter = require('./routes/books');
 const logger = require('./middlewares/logger');
+const notFoundPage = require('./middlewares/notFoundPage');
 
 const app = express();
 
@@ -13,5 +14,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/books', bookRouter);
+
+// error
+app.use(notFoundPage);
 
 module.exports = app;
